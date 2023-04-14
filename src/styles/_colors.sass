@@ -1,0 +1,14 @@
+// Colors go here
+$colors: ( rose: ( 500: #F43F5E), blue-gray: (50:#F8FAFC, 900:#0F172A), danger: (100: #f8d7da, 300: #f5c6cb, 500: #FF1717, 700: #721c29), success: (100: #d4edda, 300: #c3e6cb, 500: #15575c), secondary-alert: (100: #e2e3e5, 300: #d3d6d8, 500: #41464b), primary-alert: (100: #cfe2ff, 300: #b6d4fe, 500: #084298), warning: (100: #FFF3CD, 300: #ffecb5, 500: #A36409), info: (100: #cff4fc, 300: #b6effb, 500: #055160 ) )
+
+@function color($colorName,$value)
+
+    @if map-has-key($colors,$colorName)
+        $colorName: map-get($colors,$colorName)
+
+        @if map-has-key($colorName,$value)
+            $value: map-get($colorName,$value)
+            @return $value
+    @return null
+
+

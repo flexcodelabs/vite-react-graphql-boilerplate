@@ -1,0 +1,24 @@
+@use "colors" as *
+@use "type-scale" as *
+@use "./abstracts/_sizes" as *
+@use "fonts-faces"
+@use "./utility/classes"
+@use "media-query" as *
+@use "./abstracts/reset"
+@use "alerts"
+
+:root
+  @each $color, $shades in $colors
+    @each $shade, $value in $shades
+      --clr-#{$color}-#{$shade}: #{$value}
+
+    @each $screen-size, $font-size in $type-scale
+      @if $screen-size == small
+        @each $size, $value in $font-size
+          --fs-#{$size}: #{$value}
+        @if $screen-size == large
+          @include mq(medium)
+            @each $size, $value in $font-size
+              --fs-#{$size}: #{$value}
+    @each $size, $value in $sizes
+      --sz-#{$size}: #{$value}

@@ -1,0 +1,38 @@
+.guide {
+  display: flex;
+}
+.guide > * {
+  flex: 1;
+}
+.guide .illustration_image {
+  max-width: 400rem;
+}
+.guide .steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40rem;
+  height: 100%;
+}
+.guide .steps .step {
+  display: flex;
+  flex-direction: column;
+}
+.guide .steps .heading {
+  display: flex;
+  gap: 30rem;
+}
+.guide .steps .heading img {
+  width: 50rem;
+  height: 50rem;
+}
+.guide .steps .text {
+  margin-left: 80rem;
+}
+
+@media screen and (max-width: 720px) {
+  .guide {
+    flex-direction: column;
+    gap: 50rem;
+  }
+}/*# sourceMappingURL=home.module.css.map */

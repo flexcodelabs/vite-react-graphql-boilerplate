@@ -1,0 +1,43 @@
+.hero {
+  display: flex;
+}
+.hero > * {
+  flex: 1;
+}
+.hero .hero_content__container {
+  display: flex;
+  flex-direction: column;
+  gap: 50rem;
+}
+.hero .hero_content__container .content {
+  display: flex;
+  flex-direction: column;
+  gap: 30rem;
+}
+.hero .hero_content__container .content .cta {
+  display: flex;
+}
+.hero .illustration {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 820px) {
+  .hero {
+    flex-direction: column;
+  }
+  .hero .btn {
+    font-size: 16rem;
+  }
+  .illustration_image {
+    margin: 50rem 0;
+  }
+}
+@media screen and (max-width: 400px) {
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+}/*# sourceMappingURL=hero.module.css.map */

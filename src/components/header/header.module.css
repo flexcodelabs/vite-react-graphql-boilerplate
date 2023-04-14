@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .cta {
+  display: flex;
+  gap: 60rem;
+}/*# sourceMappingURL=header.module.css.map */

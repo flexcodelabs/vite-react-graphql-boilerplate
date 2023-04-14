@@ -1,0 +1,28 @@
+.guide
+    display: flex
+    & > *
+        flex: 1
+    .illustration_image
+        max-width: 400rem
+    .steps
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        gap:40rem
+        height: 100%
+        .step
+            display: flex
+            flex-direction: column
+        .heading
+            display: flex
+            gap: 30rem
+            img
+                width: 50rem
+                height: 50rem
+        .text
+            margin-left: 80rem
+                
+@media screen and (max-width: 720px)
+    .guide
+        flex-direction: column
+        gap: 50rem

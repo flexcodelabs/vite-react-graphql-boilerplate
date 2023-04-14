@@ -1,0 +1,369 @@
+@use "../colors" as *
+@use "../type-scale" as *
+@use "../abstracts/sizes" as *
+@use "../functions/functions" as functions
+
+$alignments: ("center", "space-between", "space-around", "space-evenly", "flex-start", "flex-end")
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    scroll-behavior: smooth
+    // outline: 1px solid red
+
+html
+    overflow-y: scroll
+    height: 100%
+    -webkit-overflow-scrolling: touch
+    overflow-scrolling: touch
+
+body
+    font-family: sans-serif
+    overflow-x: hidden
+    position: relative
+    height: auto
+    overflow-y: visible
+    -webkit-overflow-scrolling: touch
+    overflow-scrolling: touch
+    &.no-scrolling
+        max-height: 100vh
+        overflow-y: hidden
+    .app
+        height: 100%
+        min-height: 100vh
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+::selection
+    background: #c1c4f0
+    color: black
+
+::-moz-selection
+    background: #c1c4f0
+    color: black
+
+::-webkit-selection
+    background: #c1c4f0
+    color: black
+
+::-ms-selection
+    background: #c1c4f0
+    color: black
+
+::-o-selection
+    background: #c1c4f0
+    color: black
+
+@each $color, $shades in $colors
+    @each $shade, $value in $shades
+        .text-#{$color}-#{$shade}
+            color: $value
+        .bg-#{$color}-#{$shade}
+            background-color: $value
+        .border-#{$color}-#{$shade}
+            border: 1px solid $value
+        .text-hover-#{$color}-#{$shade}
+            &:hover
+                color: $value
+        .bg-hover-#{$color}-#{$shade}
+            &:hover
+                background-color: $value
+        .border-hover-#{$color}-#{$shade}
+            &:hover
+                border: 1px solid $value
+
+@each $screen-size, $font-size in $type-scale
+    @each $size, $value in $font-size
+        .text-#{$screen-size}-#{$size}
+            font-size: $value
+
+@each $size, $value in $sizes
+    .gap-#{$size}
+        gap: $value
+    .row-gap-#{$size}
+        row-gap: $value
+    .col-gap-#{$size}
+        column-gap: $value
+
+@each $size, $value in $sizes
+    .flex-#{$size}
+        flex: $value
+    .m-#{$size}
+        margin: $value
+    .mt-#{$size}
+        margin-top: $value
+    .mb-#{$size}
+        margin-bottom: $value
+    .ml-#{$size}
+        margin-left: $value
+    .mr-#{$size}
+        margin-right: $value
+    .my-#{$size}
+        margin-top: $value
+        margin-bottom: $value
+    .mx-#{$size}
+        margin-left: $value
+        margin-right: $value
+    .p-#{$size}
+        padding: $value
+    .pt-#{$size}
+        padding-top: $value
+    .pb-#{$size}
+        padding-bottom: $value
+    .pl-#{$size}
+        padding-left: $value
+    .pr-#{$size}
+        padding-right: $value
+    .py-#{$size}
+        padding-top: $value
+        padding-bottom: $value
+    .px-#{$size}
+        padding-left: $value
+        padding-right: $value
+    .br-#{$size}
+        border-radius: $value
+    .btlr-#{$size}
+        border-top-left-radius: $value
+    .btrr-#{$size}
+        border-top-right-radius: $value
+    .bblr-#{$size}
+        border-bottom-left-radius: $value
+    .bbrr-#{$size}
+        border-bottom-right-radius: $value
+    .top-#{$size}
+        top: $value
+    .bottom-#{$size}
+        bottom: $value
+    .left-#{$size}
+        left: $value
+    .right-#{$size}
+        right: $value
+    .h-#{$size}
+        height: $value
+
+.width-100
+    width: 100%
+
+.left-align
+    text-align: left
+
+.right-align
+    text-align: right
+
+.text-upper-case
+    text-transform: uppercase
+
+.text-lower-case
+    text-transform: lowercase
+
+.text-capitalize
+    text-transform: capitalize
+
+.p-a
+    position: absolute
+
+.p-r
+    position: relative
+
+.p-f
+    position: fixed
+
+.p-s
+    position: sticky
+
+.flex
+    display: flex
+
+@each $align in $alignments
+    .justify-#{$align}
+        justify-content: #{$align}
+
+    .items-#{$align}
+        align-items: #{$align}
+
+    .justify-items-#{$align}
+        justify-items: #{$align}
+
+    .content-#{$align}
+        align-content: #{$align}
+
+.flex-center
+    @include functions.flexCenter
+
+.flex-wide
+    @include functions.flexWide
+
+.flex-end
+    @include functions.flexEnd
+
+.flex-start
+    @include functions.flexStart
+
+.flex-around
+    @include functions.flexAround
+
+.flex-even
+    @include functions.flexEvenly
+
+.flex-column
+    flex-direction: column
+
+.flex-row
+    flex-direction: row
+
+.align-start
+    align-items: flex-start
+
+.align-end
+    align-items: flex-end
+
+.align-center
+    align-items: center
+
+.flex-wrap
+    flex-wrap: wrap
+
+.flex-1
+    & > *
+        flex: 1
+
+a:hover, .link:hover
+    opacity: .8
+
+a.logo:hover
+    opacity: 1
+
+.cursor-pointer
+    cursor: pointer
+
+.text-center
+    text-align: center
+
+.text-left
+    text-align: left
+
+.text-right
+    text-align: right
+
+.text-bold
+    font-weight: bold
+
+.text-italic
+    font-style: italic
+
+.font-normal
+    font-weight: normal
+
+.shadow-sm
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05)
+
+.shadow-regular
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)
+
+.shadow-md
+    box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06)
+
+.shadow-lg
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)
+.shadow-xl
+    box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)
+
+.shadow-xxl
+    box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25)
+
+.shadow-inner
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.06)
+
+.no-bg-hover
+    &:hover
+        background-color: transparent
+
+.scale-hover
+    &:hover
+        transform: scale(1.01)
+
+.container
+    width: 90%
+    height: 100%
+    margin: 0 auto
+    max-width: 1600px
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+.css-1s2u09g-control:focus
+    border: 1px solid green
+    -webkit-text-fill-color: inherit
+    -webkit-box-shadow: none
+    box-shadow: none
+    transition: background-color 5000s ease-in-out 0s
+
+input[type=number]::-webkit-inner-spin-button
+    -webkit-appearance: none
+    opacity: 0
+
+.scroll-bar, .select__menu-list
+    &::-webkit-scrollbar
+        width: .3rem
+    &::-webkit-scrollbar-track
+        background: var(--clr-dark-500)
+    &::-webkit-scrollbar-thumb
+        background: var(--clr-secondary-500)
+        border-radius: 0.5em
+
+.no-scroll-bar
+    &::-webkit-scrollbar
+        width: 0
+    &::-webkit-scrollbar-track
+        background: transparent
+    &::-webkit-scrollbar-thumb
+        background: transparent
+        border-radius: 0
+
+.backdrop
+    position: absolute
+    background: rgba(0, 0, 0, .6)
+    height: 100%
+    width: 100%
+
+.btn
+    padding: 15rem 30rem
+    position: relative
+    overflow: hidden
+    cursor: pointer
+    background: var(--clr-rose-500)
+    transition: .3s linear
+    border-radius: 10rem
+    color: var(--clr-blue-gray-50)
+    @include functions.flexCenter
+    &.btn-secondary
+        background: var(--clr-blue-gray-50)
+        color: var(--clr-blue-gray-900)
+    &.btn-link
+        background: none
+        color: var(--clr-blue-gray-900)
+p, ul, ol
+    line-height: 24px
+
+img
+    width: 100%
+    height: auto
+    display: block
+p
+    @include functions.clamper(16rem, 20rem)
+
+.heading
+    @include functions.clamper(34rem,64rem)
+.h2
+    @include functions.clamper(30rem,62rem)
+
+
+

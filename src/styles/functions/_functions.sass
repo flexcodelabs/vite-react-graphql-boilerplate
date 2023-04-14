@@ -1,0 +1,51 @@
+@use "sass:math"
+@use "sass:map"
+
+@mixin flexCenter()
+    display: flex
+    justify-content: center
+    align-items: center
+
+@mixin flexWide()
+    @include flexCenter()
+    justify-content: space-between
+
+@mixin flexEnd()
+    @include flexCenter()
+    justify-content: flex-end
+
+@mixin flexStart()
+    @include flexCenter()
+    justify-content: flex-start
+
+@mixin flexAround()
+    @include flexCenter()
+    justify-content: space-around
+
+@mixin flexEvenly()
+    @include flexCenter()
+    justify-content: space-evenly
+
+$media-breakpoints: ( mobile: 400rem, desktop: 1000rem )
+
+$default-min-bp: map.get($media-breakpoints, "mobile")
+$default-max-bp: map.get($media-breakpoints, "desktop")
+
+@function rnd($number, $places: 0)
+  $n: 1
+  @if $places > 0
+    @for $i from 1 through $places
+      $n: $n * 10
+  @return math.div(math.round($number * $n), $n)
+
+
+@function clamped($min-px, $max-px, $min-bp: $default-min-bp, $max-bp: $default-max-bp)
+  $slope: math.div($max-px - $min-px, $max-bp - $min-bp)
+  $slope-vw: rnd($slope * 100, 2)
+  $intercept-rems: rnd(($min-px - $slope * $min-bp), 2)
+  $min-rems: rnd($min-px, 2)
+  $max-rems: rnd($max-px, 2)
+  @return clamp(#{$min-rems}, #{$slope-vw}vw + #{$intercept-rems}, #{$max-rems})
+
+@mixin clamper($min, $max)
+    font-size: clamped($min, $max)
